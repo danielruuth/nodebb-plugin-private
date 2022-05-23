@@ -6,7 +6,7 @@ plugin.privateforum = async (data, callback) => {
   var path = data.req.path;
 
   //These will be set in an admin view later
-  let privatePages = ['/categories','/recent','/tags','/popular','/users','/groups', '/unread'];
+  let privatePages = ['/api/categories','/api/recent','/api/tags','/api/popular','/api/users','/api/groups', '/api/unread'];
   winston.verbose(`Path is = ${path}, private is = ${privatePages.includes(path)}`);
 
   if (!data.req.loggedIn && privatePages.includes(path)){
