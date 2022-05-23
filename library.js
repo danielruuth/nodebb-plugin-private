@@ -16,7 +16,7 @@ plugin.privateforum = async (data, callback) => {
     winston.verbose("[plugin-nodebb-private] Oh goodie, you are allowed here");
     //callback(null, data);
   }
-  callback(null, data);
+  //callback(null, data);
 };
 plugin.admin = {};
 plugin.admin.menu = function (custom_header) {
