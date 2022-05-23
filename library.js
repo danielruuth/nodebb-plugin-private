@@ -11,7 +11,7 @@ plugin.privateforum = async (data, callback) => {
         winston.verbose(`Path is = ${path}, allowed is = ${privatePages.includes(path)}`);
 
         if (data.req.loggedIn || privatePages.includes(path)) {
-                winston.verbose("[plugin-nodebb-private] User is logged or URL is allowed ("+ req.url +"), no redirect.");
+                winston.verbose("[plugin-nodebb-private] User is logged or URL is allowed ("+ data.req.url +"), no redirect.");
         } else {
                 winston.verbose("[plugin-nodebb-private] User is not logged and URL is not allowed ("+ data.req.url +"), redirecting to login page.");
                 helpers.notAllowed(data.req, data.res);
