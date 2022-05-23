@@ -4,7 +4,7 @@ const helpers = require.main.require('./src/controllers/helpers');
 
 plugin.privateforum = async (data, callback) => {
 
-        var path = req.path;
+        var path = data.req.path;
 
         let privatePages = ['/categories','/recent','/tags','/popular','/users','/groups', '/unread'];
 
@@ -17,17 +17,17 @@ plugin.privateforum = async (data, callback) => {
                 helpers.notAllowed(data.req, data.res);
         }
 };
-plugin.init = async (params) => {
-	const { router, middleware/* , controllers */ } = params;
+/*plugin.init = async (params) => {
+	const { router, middleware, controllers } = params;
 
 	routeHelpers.setupPageRoute(router, '/private', middleware, [(req, res, next) => {
 		setImmediate(next);
 	}], (req, res) => {
-		winston.info(`[plugins/private] Navigated to ${nconf.get('relative_path')}/private`);
-		res.render('private', { uid: req.uid });
+		winston.info(`[plugins/private] Navigated to ${nconf.get('relative_path')}/private-plug`);
+		res.render('private-plug', { uid: req.uid });
 	});
 
 	routeHelpers.setupAdminPageRoute(router, '/admin/plugins/private', middleware, [], controllers.renderAdminPage);
-};
+};*/
 
 module.exports = plugin;
