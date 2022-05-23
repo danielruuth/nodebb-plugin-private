@@ -7,11 +7,11 @@ plugin.privateforum = async (data, callback) => {
 
   //These will be set in an admin view later
   let privatePages = ['/categories','/recent','/tags','/popular','/users','/groups', '/unread'];
-  winston.verbose(`Path is = ${path}, allowed is = ${privatePages.includes(path)}`);
+  winston.verbose(`Path is = ${path}, private is = ${privatePages.includes(path)}`);
 
   if (!data.req.loggedIn && privatePages.includes(path)){
     winston.verbose("[plugin-nodebb-private] This is a private path, we should redirect to login");
-    //helpers.redirect(res, '/login');	// 307 for everything else
+    helpers.redirect(res, '/login');	// 307 for everything else
   }else{
     winston.verbose("[plugin-nodebb-private] Oh goodie, you are allowed here");
     //callback(null, data);
