@@ -1,4 +1,4 @@
-** This is a fork from LM1LC3N7's discontinued plugin nodebb-private-forum **
+*** This is a fork from LM1LC3N7's discontinued plugin nodebb-private-forum ***
 
 # Private Forum Plugin for NodeBB
 
