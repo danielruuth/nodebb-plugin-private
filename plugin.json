@@ -5,5 +5,5 @@
   "hooks": [{
     "hook": "response:router.page", "method": "privateforum"
   }],
-  "templates": "./static",
+  "templates": "./static"
 }
