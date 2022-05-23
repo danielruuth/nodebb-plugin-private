@@ -11,7 +11,7 @@ plugin.privateforum = async (data, callback) => {
 
   if (!data.req.loggedIn && privatePages.includes(path)){
     winston.verbose("[plugin-nodebb-private] This is a private path, we should redirect to login");
-    helpers.redirect(res, '/login');	// 307 for everything else
+    helpers.redirect(data.res, '/login');// 307 for everything else
   }else{
     winston.verbose("[plugin-nodebb-private] Oh goodie, you are allowed here");
     //callback(null, data);
@@ -29,7 +29,6 @@ plugin.admin.menu = function (custom_header) {
 };
 
 plugin.admin.onLoad = async function (params) {
-  const helpers = require.main.require('./src/routes/helpers');
     helpers.setupAdminPageRoute(params.router, '/admin/plugins/dr-private', params.middleware, [], async (req, res) => {
       res.render('admin/plugins/dr-private', {});
     });
