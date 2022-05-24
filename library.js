@@ -3,10 +3,11 @@ let winston = module.parent.require('winston');
 const helpers = require.main.require('./src/controllers/helpers');
 
 plugin.privateforum = async (data, callback) => {
-  var path = data.req.path;
+  var path = data.req.path.split('/').pop();
 
   //These will be set in an admin view later
-  let privatePages = ['/api/categories','/api/recent','/api/tags','/api/popular','/api/users','/api/groups', '/api/unread'];
+  let privatePages = ['categories','recent','tags','popular','users','groups', 'unread'];
+
   winston.verbose(`Path is = ${path}, private is = ${privatePages.includes(path)}`);
 
   if (!data.req.loggedIn && privatePages.includes(path)){
@@ -14,9 +15,7 @@ plugin.privateforum = async (data, callback) => {
     helpers.redirect(data.res, '/login');// 307 for everything else
   }else{
     winston.verbose("[plugin-nodebb-private] Oh goodie, you are allowed here");
-    //callback(null, data);
   }
-  //callback(null, data);
 };
 plugin.admin = {};
 plugin.admin.menu = function (custom_header) {
